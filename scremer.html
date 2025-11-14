@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Revisa esto urgente</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            overflow: hidden;
+        }
+        img {
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- IMAGEN DEL SUSTO -->
+    <img src="monja.png" id="imgSusto">
+
+    <!-- SONIDO DEL GRITO -->
+    <audio id="audioSusto" autoplay>
+        <source src="grito_escalofriante.wav" type="audio/wav">
+    </audio>
+
+    <script>
+        // Garantiza que el audio arranque apenas se pueda reproducir
+        window.onload = function() {
+            let audio = document.getElementById("audioSusto");
+            audio.volume = 1.0;
+            audio.play().catch(() => {
+                // Si el navegador bloquea autoplay, al primer clic lo activa
+                document.body.addEventListener("click", () => {
+                    audio.play();
+                }, { once: true });
+            });
+        };
+    </script>
+
+</body>
+</html>
